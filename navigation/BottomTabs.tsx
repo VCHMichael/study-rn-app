@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ROUTES } from "./routes";
 import HomeScreen from "@/screens/HomeScreen";
 import ProductStackNavigator from "./stack/ProductStack";
+import SettingsScreen from "@/screens/SettingsScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -13,8 +14,9 @@ const BottomTabs = () => {
       <Tab.Screen
         name={ROUTES.PRODUCT_STACK}
         component={ProductStackNavigator}
-        options={{headerShown: false}}
+        options={{ headerShown: false }}
       />
+      <Tab.Screen name={ROUTES.SETTINGS} component={SettingsScreen} />
     </Tab.Navigator>
   );
 };

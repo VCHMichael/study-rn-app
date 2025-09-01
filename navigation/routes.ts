@@ -8,4 +8,7 @@ export const ROUTES = {
   DRAWER_NAVIGATOR: "DrawerNavigator",
   BOTTOM_TABS: "BottomTabs",
   PRODUCT_STACK: "ProductStack",
+  LOGIN_SCREEN: "LoginScreen",
+  REGISTRATION: "RegistrationScreen",
+  AUTH_STACK: "AuthStack"
 };

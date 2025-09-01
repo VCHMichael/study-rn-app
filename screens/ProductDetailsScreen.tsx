@@ -7,6 +7,14 @@ const ProductDetailsScreen = ({ route }: any) => {
 
   const productItem = PRODUCTS_DATA.find((i) => i.id === productId);
 
+  if (!productItem) {
+    return (
+      <View style={styles.card}>
+        <Text style={styles.title}>Product not found.</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.card}>
       <Image

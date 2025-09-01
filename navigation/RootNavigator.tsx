@@ -2,8 +2,9 @@ import React from "react";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { ROUTES } from "./routes";
 import MainNavigator from "./DrawerNavigator";
+import { ROUTES } from "./routes";
+import AuthStack from "./stack/AuthStack";
 
 const RootStack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ const RootNavigator = () => {
         name={ROUTES.DRAWER_NAVIGATOR}
         component={MainNavigator}
       />
+      <RootStack.Screen name={ROUTES.AUTH_STACK} component={AuthStack} />
     </RootStack.Navigator>
   );
 };

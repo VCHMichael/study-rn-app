@@ -1,20 +1,28 @@
-import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { ROUTES } from "./routes";
+import React from "react";
 import BottomTabs from "./BottomTabs";
-import SettingsScreen from "@/screens/SettingsScreen";
+import { ROUTES } from "./routes";
+
+import type { MainNavigatorProps } from "./types";
+import { CustomDrawerContent } from "@/components/CustomDrawerContent/CustomDrawerContant";
 
 const Drawer = createDrawerNavigator();
 
-const MainNavigator = () => {
+const MainNavigator: React.FC<MainNavigatorProps> = ({ navigation }) => {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator
+      screenOptions={{
+        headerTitle: "",
+      }}
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+    >
       <Drawer.Screen
         name={ROUTES.BOTTOM_TABS}
         component={BottomTabs}
-        options={{ title: '' }}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
       />
-      <Drawer.Screen name={ROUTES.SETTINGS} component={SettingsScreen} />
     </Drawer.Navigator>
   );
 };
