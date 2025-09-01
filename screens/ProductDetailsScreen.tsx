@@ -1,16 +1,23 @@
 import { View, Text, Image, StyleSheet } from "react-native";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { PRODUCTS_DATA } from "@/store/productsData";
+import { useNavigation } from "@react-navigation/native";
 
 const ProductDetailsScreen = ({ route }: any) => {
+  const navigation = useNavigation();
+
   const productId = route.params.id;
 
   const productItem = PRODUCTS_DATA.find((i) => i.id === productId);
 
+  useLayoutEffect(() => {
+    navigation.setOptions({ title: productItem?.title ?? "Product Details" });
+  }, [navigation, productItem?.title]);
+
   if (!productItem) {
     return (
       <View style={styles.card}>
-        <Text style={styles.title}>Product not found.</Text>
+        <Text style={styles.title}>Product not found</Text>
       </View>
     );
   }

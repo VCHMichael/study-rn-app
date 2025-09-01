@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View, StyleSheet } from "react-native";
+import { ScrollView, View, StyleSheet, FlatList } from "react-native";
 import ProductCard from "../components/ProductCard/ProductCard";
 import CustomButton from "../components/CustomButton/CustomButton";
 import { PRODUCTS_DATA } from "@/store/productsData";
@@ -14,22 +14,24 @@ const ProductListScreen = () => {
   const handleOnPress = (id: string) =>
     navigation.navigate(ROUTES.PRODUCT_DETAILS, { id });
 
-  // NESTED NAVIGATION
-  // navigation.navigate(ROUTES.PRODUCT_DETAILS, { screen: 'NAME_SCREEN', params: { id } });
+  const renderItem = ({ item }: { item: (typeof PRODUCTS_DATA)[0] }) => (
+    <View style={styles.cardWrapper}>
+      <ProductCard
+        title={item.title}
+        price={item.price}
+        imageUrl={item.imageUrl}
+      />
+      <CustomButton title="Buy" onPress={() => handleOnPress(item.id)} />
+    </View>
+  );
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {PRODUCTS_DATA.map((product) => (
-        <View key={product.id} style={styles.cardWrapper}>
-          <ProductCard
-            title={product.title}
-            price={product.price}
-            imageUrl={product.imageUrl}
-          />
-          <CustomButton title="Buy" onPress={() => handleOnPress(product.id)} />
-        </View>
-      ))}
-    </ScrollView>
+    <FlatList
+      data={PRODUCTS_DATA}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={renderItem}
+      contentContainerStyle={styles.container}
+    />
   );
 };
 
