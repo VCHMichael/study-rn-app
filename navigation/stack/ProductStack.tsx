@@ -4,8 +4,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ROUTES } from "../routes";
 import ProductListScreen from "@/screens/ProductListScreen";
 import ProductDetailsScreen from "@/screens/ProductDetailsScreen";
+import { RootStackParamList } from "../types";
 
-const ProductStack = createNativeStackNavigator();
+const ProductStack = createNativeStackNavigator<RootStackParamList>();
 
 const ProductStackNavigator = () => {
   return (

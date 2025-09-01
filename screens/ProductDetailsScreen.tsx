@@ -1,14 +1,20 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { PRODUCTS_DATA } from "@/store/productsData";
-import { useNavigation } from "@react-navigation/native";
 
-const ProductDetailsScreen = ({ route }: any) => {
-  const navigation = useNavigation();
+import { StackScreenProps } from "@react-navigation/stack";
+import { ROUTES } from "@/navigation/routes";
+import { RootStackParamList } from "../navigation/types";
 
-  const productId = route.params.id;
+type Props = StackScreenProps<
+  RootStackParamList,
+  typeof ROUTES.PRODUCT_DETAILS
+>;
 
-  const productItem = PRODUCTS_DATA.find((i) => i.id === productId);
+const ProductDetailsScreen = ({ route, navigation }: Props) => {
+  const { id } = route.params;
+
+  const productItem = PRODUCTS_DATA.find((i) => i.id === id);
 
   useLayoutEffect(() => {
     navigation.setOptions({ title: productItem?.title ?? "Product Details" });
