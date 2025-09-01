@@ -17,22 +17,27 @@ export const CustomDrawerContent = (props: DrawerContentComponentProps) => {
   const insets = useSafeAreaInsets();
   const { navigation } = props;
 
-  const goLogin = () => {
+  const navigateToLogin = () => {
     navigation.closeDrawer();
     navigation.getParent()?.navigate(ROUTES.AUTH_STACK, {
       screen: ROUTES.LOGIN_SCREEN,
     });
   };
 
-  const goRegistration = () => {
+  const navigateToRegistration = () => {
     navigation.closeDrawer();
     navigation.getParent()?.navigate(ROUTES.AUTH_STACK, {
       screen: ROUTES.REGISTRATION,
     });
   };
 
-  const goHome = () => {
+  const navigateToHome = () => {
     navigation.navigate(ROUTES.BOTTOM_TABS, { screen: ROUTES.HOME });
+    navigation.closeDrawer();
+  };
+
+  const navigateToProfile = () => {
+    navigation.navigate(ROUTES.BOTTOM_TABS, { screen: ROUTES.PROFILE });
     navigation.closeDrawer();
   };
 
@@ -43,8 +48,8 @@ export const CustomDrawerContent = (props: DrawerContentComponentProps) => {
         contentContainerStyle={styles.scrollContent}
       >
         <View style={styles.topButtons}>
-          <CustomButton title="Login" onPress={goLogin} />
-          <CustomButton title="Registration" onPress={goRegistration} />
+          <CustomButton title="Login" onPress={navigateToLogin} />
+          <CustomButton title="Registration" onPress={navigateToRegistration} />
         </View>
       </DrawerContentScrollView>
 
@@ -54,7 +59,8 @@ export const CustomDrawerContent = (props: DrawerContentComponentProps) => {
           { paddingBottom: Math.max(insets.bottom, 16) },
         ]}
       >
-        <CustomButton title="Home" onPress={goHome} />
+        <CustomButton title="Profile" onPress={navigateToProfile} />
+        <CustomButton title="Home" onPress={navigateToHome} />
       </View>
     </SafeAreaView>
   );
@@ -69,9 +75,10 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
   },
   topButtons: {
-    gap: 12,
+    gap: 8,
   },
   bottomButton: {
     paddingHorizontal: 16,
+    gap: 8
   },
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import ProductCard from "../components/ProductCard/ProductCard";
 import CustomButton from "../components/CustomButton/CustomButton";
 import { PRODUCTS_DATA } from "@/store/productsData";
