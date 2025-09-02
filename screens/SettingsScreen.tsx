@@ -1,23 +1,33 @@
 import { View, StyleSheet, TextInput } from "react-native";
 import React from "react";
 import CustomButton from "@/components/CustomButton/CustomButton";
+import { useUser } from "@/context/user/useUser";
 
 const SettingsScreen = () => {
+  const { setUser, user } = useUser();
+
+  const [name, setName] = React.useState(user?.name ?? "");
+  const [email, setEmail] = React.useState(user?.email ?? "");
+
+  const handleSavePress = () => {
+    setUser({ name, email });
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        value={""}
-        onChangeText={() => {}}
+        value={name}
+        onChangeText={setName}
         placeholder="Name"
       />
       <TextInput
         style={styles.input}
-        value={""}
-        onChangeText={() => {}}
+        value={email}
+        onChangeText={setEmail}
         placeholder="Email"
       />
-      <CustomButton title="Save" onPress={() => {}} />
+      <CustomButton title="Save" onPress={handleSavePress} />
     </View>
   );
 };

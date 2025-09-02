@@ -20,7 +20,7 @@ const RootNavigator = () => {
       />
       <RootStack.Screen name={ROUTES.AUTH_STACK} component={AuthStack} />
     </RootStack.Navigator>
-  );
+  );  
 };
 
 export default RootNavigator;
