@@ -1,6 +1,10 @@
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import { ROUTES } from "./routes";
 import { NavigatorScreenParams } from "@react-navigation/native";
+import { ROUTES } from "./routes";
+export type ProfileStackParamList = {
+  [ROUTES.PROFILE]: undefined;
+  [ROUTES.LOCATION]: undefined;
+};
 
 export type MainNavigatorProps = {
   navigation: DrawerNavigationProp<DrawerParamList>;
@@ -22,4 +26,5 @@ export type RootStackParamList = {
   [ROUTES.PROFILE]: undefined;
   [ROUTES.SETTINGS]: undefined;
   [ROUTES.AUTH_STACK]: NavigatorScreenParams<AuthStackParamList>;
+  [ROUTES.LOCATION]: undefined;
 };

@@ -11,4 +11,5 @@ export const ROUTES = {
   LOGIN_SCREEN: "LoginScreen",
   REGISTRATION: "RegistrationScreen",
   AUTH_STACK: "AuthStack",
+  LOCATION: 'Location'
 } as const;

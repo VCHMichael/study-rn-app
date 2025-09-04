@@ -1,10 +1,10 @@
-import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { ROUTES } from "./routes";
 import HomeScreen from "@/screens/HomeScreen";
-import ProductStackNavigator from "./stack/ProductStack";
 import SettingsScreen from "@/screens/SettingsScreen";
-import ProfileScreen from "@/screens/ProfileScreen";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React from "react";
+import { ROUTES } from "./routes";
+import ProductStackNavigator from "./stack/ProductStack";
+import ProfileStack from "./stack/ProfileStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +18,7 @@ const BottomTabs = () => {
         options={{ headerShown: false }}
       />
       <Tab.Screen name={ROUTES.SETTINGS} component={SettingsScreen} />
-      <Tab.Screen name={ROUTES.PROFILE} component={ProfileScreen} />
+      <Tab.Screen name={ROUTES.PROFILE} component={ProfileStack} />
     </Tab.Navigator>
   );
 };
