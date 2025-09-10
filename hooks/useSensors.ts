@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Accelerometer, Gyroscope, Magnetometer, MagnetometerMeasurement } from "expo-sensors";
+import { Accelerometer, Gyroscope, Magnetometer, AccelerometerMeasurement, GyroscopeMeasurement, MagnetometerMeasurement } from "expo-sensors";
 
 export const useSensors = () => {
-  const [accelerometerData, setAccelerometerData] = useState(null);
-  const [gyroscopeData, setGyroscopeData] = useState(null);
-  const [magnetometerData, setMagnetometerData] = useState(null);
+  const [accelerometerData, setAccelerometerData] = useState<AccelerometerMeasurement | null>(null);
+  const [gyroscopeData, setGyroscopeData] = useState<GyroscopeMeasurement | null>(null);
+  const [magnetometerData, setMagnetometerData] = useState<MagnetometerMeasurement | null>(null);
 
   useEffect(() => {
     const subscription = Accelerometer.addListener((data) => setAccelerometerData(data));

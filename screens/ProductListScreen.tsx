@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import ProductCard from "../components/ProductCard/ProductCard";
 import CustomButton from "../components/CustomButton/CustomButton";
@@ -11,18 +11,22 @@ import { RootStackParamList } from "../navigation/types";
 const ProductListScreen = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
-  const handleOnPress = (id: string) =>
-    navigation.navigate(ROUTES.PRODUCT_DETAILS, { id });
-
-  const renderItem = ({ item }: { item: (typeof PRODUCTS_DATA)[0] }) => (
-    <View style={styles.cardWrapper}>
-      <ProductCard
-        title={item.title}
-        price={item.price}
-        imageUrl={item.imageUrl}
-      />
-      <CustomButton title="Buy" onPress={() => handleOnPress(item.id)} />
-    </View>
+  const renderItem = useCallback(
+    ({ item }: { item: (typeof PRODUCTS_DATA)[0] }) => {
+      const handleOnPress = (id: string) =>
+        navigation.navigate(ROUTES.PRODUCT_DETAILS, { id });
+      return (
+        <View style={styles.cardWrapper}>
+          <ProductCard
+            title={item.title}
+            price={item.price}
+            imageUrl={item.imageUrl}
+          />
+          <CustomButton title="Buy" onPress={() => handleOnPress(item.id)} />
+        </View>
+      );
+    },
+    [navigation]
   );
 
   return (
