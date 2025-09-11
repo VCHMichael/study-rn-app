@@ -9,14 +9,23 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.vchm.studyapp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "package": "com.vchm.studyapp"
     },
     "web": {
       "bundler": "metro",
@@ -39,12 +48,17 @@
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
       ],
-            [
+      [
         "expo-sensors",
         {
           "motionPermission": "Allow $(PRODUCT_NAME) to access your device motion"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "9c4f34f0-3dcc-41e1-bd20-25f232c2e955"
+      }
+    }
   }
 }
